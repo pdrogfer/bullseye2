@@ -45,7 +45,7 @@ struct ContentView: View {
                     print("Alert closed")
                 }
             }, message: {
-                var roundedValue = Int(sliderValue.rounded())
+                let roundedValue = Int(sliderValue.rounded())
                 Text("""
                 Value is \(roundedValue)
                 You scored \(game.points(sliderValue: roundedValue)) points this round.
