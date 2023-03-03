@@ -14,9 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
-                .opacity(0.3)
-                .ignoresSafeArea()
+            BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
                 SliderView(value: $sliderValue)
@@ -72,8 +70,11 @@ struct HitMeButtonView: View {
                 )
             }
         )
+        .overlay(RoundedRectangle(cornerRadius: 21.0)
+            .strokeBorder(Color.white, lineWidth: 2)
+        )
         .foregroundColor(Color.white)
-        .cornerRadius(16.0)
+        .cornerRadius(21.0)
         .bold()
         .alert("Hello there!",
                isPresented: $alertIsVisible, actions: {

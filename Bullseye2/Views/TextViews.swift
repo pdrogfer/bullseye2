@@ -42,12 +42,39 @@ struct SliderText: View {
     }
 }
 
+struct LabelText: View {
+    var text: String
+    var body: some View {
+        Text(text)
+            .foregroundColor(Color("TextColor"))
+            .bold()
+            .font(.title3)
+            .kerning(1.5)
+    }
+}
+
+struct RoundRectText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.title2)
+            .foregroundColor(Color("TextColor"))
+            .frame(width: 56, height: 56)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20).strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2)
+            )
+    }
+}
+
 struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             InstructionText(text: "Instructions")
             TargetValueText(value: 42)
             SliderText(text: "123")
+            LabelText(text: "Label")
+            RoundRectText(text: "12")
         }
         
     }
