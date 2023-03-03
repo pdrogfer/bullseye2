@@ -45,10 +45,10 @@ struct SliderText: View {
 struct LabelText: View {
     var text: String
     var body: some View {
-        Text(text)
+        Text(text.uppercased())
             .foregroundColor(Color("TextColor"))
             .bold()
-            .font(.title3)
+            .font(.caption)
             .kerning(1.5)
     }
 }
@@ -58,11 +58,12 @@ struct RoundRectText: View {
     
     var body: some View {
         Text(text)
-            .font(.title2)
+            .font(.title3)
+            .kerning(-0.2)
             .foregroundColor(Color("TextColor"))
-            .frame(width: 56, height: 56)
+            .frame(width: 68, height: 56)
             .overlay(
-                RoundedRectangle(cornerRadius: 20).strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2)
+                RoundedRectangle(cornerRadius: 21).strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2)
             )
     }
 }

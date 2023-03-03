@@ -51,7 +51,7 @@ struct NumberView: View {
     var text: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 5) {
             LabelText(text: title)
             RoundRectText(text: text)
         }

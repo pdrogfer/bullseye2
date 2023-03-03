@@ -42,10 +42,10 @@ struct SliderView: View {
     @Binding var value: Double
     var body: some View {
         HStack {
-            SliderText(text: "1")
+            SliderText(text: "1").frame(width: 35)
             Slider(value: $value, in: 1.0...100.0)
-            SliderText(text: "100")
-        }.padding(.all, 20.0)
+            SliderText(text: "100").frame(width: 35)
+        }.padding()
     }
 }
 
@@ -80,7 +80,7 @@ struct HitMeButtonView: View {
                isPresented: $alertIsVisible, actions: {
                     Button("Awesome") {
                         alertIsVisible = false
-                        print("Alert closed")
+                        game.startNewRound(points: game.points(sliderValue: Int(sliderValue)))
                     }
                 },
                message: {
