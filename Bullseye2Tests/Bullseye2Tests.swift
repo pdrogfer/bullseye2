@@ -36,6 +36,20 @@ final class Bullseye2Tests: XCTestCase {
         XCTAssertEqual(score, 95)
     }
     
+    func testScoreExact() throws {
+        let guess = game.target
+        let score = game.points(sliderValue: guess)
+        
+        XCTAssertEqual(score, 100 + game.bonusExact)
+    }
+    
+    func testScoreClose() throws {
+        let guess = game.target + 2
+        let score = game.points(sliderValue: guess)
+        
+        XCTAssertEqual(score, 98 + game.bonusClose)
+    }
+    
     func testRoundIncrementOnNewRound() throws {
         game.startNewRound(points: 100)
         
@@ -53,5 +67,17 @@ final class Bullseye2Tests: XCTestCase {
         game.startNewRound(points: 23)
         
         XCTAssertNotEqual(game.target, oldTarget)
+    }
+    
+    func testRestart() throws {
+        game.startNewRound(points: 100)
+        
+        XCTAssertNotEqual(game.round, 1)
+        XCTAssertNotEqual(game.score, 0)
+        
+        game.restart()
+        
+        XCTAssertEqual(game.round, 1)
+        XCTAssertEqual(game.score, 0)
     }
 }
