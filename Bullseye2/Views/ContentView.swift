@@ -14,18 +14,26 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(game: $game)
+            BackgroundView(alertIsVisible: $alertIsVisible, game: $game)
             VStack {
                 InstructionsView(game: $game)
-                    .padding(.bottom, 100)
-                HitMeButtonView(
-                    sliderValue: $sliderValue,
-                    alertIsVisible: $alertIsVisible,
-                    game: $game
-                )
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                } else {
+                    HitMeButtonView(
+                        sliderValue: $sliderValue,
+                        alertIsVisible: $alertIsVisible,
+                        game: $game
+                    )
+                }
+                
             }
             .padding(.horizontal)
-            SliderView(value: $sliderValue)
+            if (!alertIsVisible) {
+                SliderView(value: $sliderValue)
+            }
+            
         }
     }
 }
@@ -35,7 +43,7 @@ struct InstructionsView: View {
     var body: some View {
         VStack {
             InstructionText(text: "🎯🎯🎯 \n Put the Bullseye as close as you can to")
-            TargetValueText(value: game.target)
+            BigNumberText(value: game.target)
         }
     }
 }
@@ -78,21 +86,22 @@ struct HitMeButtonView: View {
         .foregroundColor(Color.white)
         .cornerRadius(21.0)
         .bold()
-        .alert("Hello there!",
-               isPresented: $alertIsVisible, actions: {
-                    Button("Awesome") {
-                        alertIsVisible = false
-                        game.startNewRound(points: game.points(sliderValue: Int(sliderValue)))
-                    }
-                },
-               message: {
-                    let roundedValue = Int(sliderValue.rounded())
-                    Text("""
-                    Value is \(roundedValue)
-                    You scored \(game.points(sliderValue: roundedValue)) points this round.
-                    """)
-                }
-        )
+        
+//        .alert("Hello there!",
+//               isPresented: $alertIsVisible, actions: {
+//                    Button("Awesome") {
+//                        alertIsVisible = false
+//                        game.startNewRound(points: game.points(sliderValue: Int(sliderValue)))
+//                    }
+//                },
+//               message: {
+//                    let roundedValue = Int(sliderValue.rounded())
+//                    Text("""
+//                    Value is \(roundedValue)
+//                    You scored \(game.points(sliderValue: roundedValue)) points this round.
+//                    """)
+//                }
+//        )
     }
 }
 

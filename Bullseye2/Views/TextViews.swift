@@ -20,7 +20,7 @@ struct InstructionText: View {
     }
 }
 
-struct TargetValueText: View {
+struct BigNumberText: View {
     var value: Int
     var body: some View {
         Text(String(value))
@@ -98,7 +98,7 @@ struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             InstructionText(text: "Instructions")
-            TargetValueText(value: 42)
+            BigNumberText(value: 42)
             SliderText(text: "123")
             LabelText(text: "Label")
             RoundRectText(text: "12")

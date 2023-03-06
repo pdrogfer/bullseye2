@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct BackgroundView: View {
+    @Binding var alertIsVisible: Bool
     @Binding var game: Game
     
     var body: some View {
         VStack {
-            TopView(game: $game)
+            TopView(alertIsVisible: $alertIsVisible, game: $game)
             Spacer()
             BottomView(game: $game)
         }
@@ -22,11 +23,13 @@ struct BackgroundView: View {
 }
 
 struct TopView: View {
+    @Binding var alertIsVisible: Bool
     @Binding var game: Game
     
     var body: some View {
         HStack {
             Button(action: {
+                alertIsVisible = false
                 game.restart()
             }, label: {
                 RoundedImageViewStroked(systemName: "arrow.counterclockwise")
@@ -87,6 +90,6 @@ struct RingsView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundView(game: .constant(Game()))
+        BackgroundView(alertIsVisible: .constant(false), game: .constant(Game()))
     }
 }
