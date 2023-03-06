@@ -68,6 +68,32 @@ struct RoundRectText: View {
     }
 }
 
+struct BodyText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
+            .lineSpacing(12)
+    }
+}
+
+struct ButtonText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .foregroundColor(Color.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor)
+            .cornerRadius(12)
+    }
+}
+
 struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -76,7 +102,9 @@ struct TextViews_Previews: PreviewProvider {
             SliderText(text: "123")
             LabelText(text: "Label")
             RoundRectText(text: "12")
-        }
+            BodyText(text: "Body text")
+            ButtonText(text: "Button text")
+        }.padding()
         
     }
 }
