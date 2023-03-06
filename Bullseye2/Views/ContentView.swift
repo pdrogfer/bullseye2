@@ -17,14 +17,15 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
-                SliderView(value: $sliderValue)
+                    .padding(.bottom, 100)
                 HitMeButtonView(
                     sliderValue: $sliderValue,
                     alertIsVisible: $alertIsVisible,
                     game: $game
                 )
             }
-            .padding(.all)
+            .padding(.horizontal)
+            SliderView(value: $sliderValue)
         }
     }
 }
@@ -32,9 +33,10 @@ struct ContentView: View {
 struct InstructionsView: View {
     @Binding var game: Game
     var body: some View {
-        InstructionText(text: "🎯🎯🎯 \n Put the Bullseye as close as you can to")
-        
-        TargetValueText(value: game.target)
+        VStack {
+            InstructionText(text: "🎯🎯🎯 \n Put the Bullseye as close as you can to")
+            TargetValueText(value: game.target)
+        }
     }
 }
 
