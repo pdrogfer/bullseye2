@@ -19,6 +19,7 @@
 		EB272B5029AFA3E200276AEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB272B4F29AFA3E200276AEF /* Assets.xcassets */; };
 		EB272B5329AFA3E200276AEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB272B5229AFA3E200276AEF /* Preview Assets.xcassets */; };
 		EBDDDB4029B73E99004C77AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDDB3F29B73E99004C77AB /* Constants.swift */; };
+		EBDDDB4229B75C81004C77AB /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDDDB4129B75C81004C77AB /* LeaderboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		EB272B4F29AFA3E200276AEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB272B5229AFA3E200276AEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EBDDDB3F29B73E99004C77AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EBDDDB4129B75C81004C77AB /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				EB0B97A629B209A800BEACB6 /* RoundedViews.swift */,
 				EB17D86329B22F72003C19DD /* BackgroundView.swift */,
 				EB036B2D29B6231F00487A52 /* PointsView.swift */,
+				EBDDDB4129B75C81004C77AB /* LeaderboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDDDB4229B75C81004C77AB /* LeaderboardView.swift in Sources */,
 				EB0B97A729B209A800BEACB6 /* RoundedViews.swift in Sources */,
 				EB272B4E29AFA3E200276AEF /* ContentView.swift in Sources */,
 				EB0B97A329B0FFCA00BEACB6 /* TextViews.swift in Sources */,
