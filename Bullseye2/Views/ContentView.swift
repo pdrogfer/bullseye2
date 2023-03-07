@@ -19,19 +19,19 @@ struct ContentView: View {
                 InstructionsView(game: $game)
                     .padding(.bottom, alertIsVisible ? 0 : 100)
                 if alertIsVisible {
-                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game).transition(.scale)
                 } else {
                     HitMeButtonView(
                         sliderValue: $sliderValue,
                         alertIsVisible: $alertIsVisible,
                         game: $game
-                    )
+                    ).transition(.scale)
                 }
                 
             }
             .padding(.horizontal)
             if (!alertIsVisible) {
-                SliderView(value: $sliderValue)
+                SliderView(value: $sliderValue).transition(.scale)
             }
             
         }
@@ -67,7 +67,9 @@ struct HitMeButtonView: View {
     var body: some View {
         Button("Hit me".uppercased()) {
             // Action on click
-            alertIsVisible = true
+            withAnimation {
+                alertIsVisible = true
+            }
         }
         .padding(20)
         .background(
@@ -86,22 +88,6 @@ struct HitMeButtonView: View {
         .foregroundColor(Color.white)
         .cornerRadius(21.0)
         .bold()
-        
-//        .alert("Hello there!",
-//               isPresented: $alertIsVisible, actions: {
-//                    Button("Awesome") {
-//                        alertIsVisible = false
-//                        game.startNewRound(points: game.points(sliderValue: Int(sliderValue)))
-//                    }
-//                },
-//               message: {
-//                    let roundedValue = Int(sliderValue.rounded())
-//                    Text("""
-//                    Value is \(roundedValue)
-//                    You scored \(game.points(sliderValue: roundedValue)) points this round.
-//                    """)
-//                }
-//        )
     }
 }
 
@@ -109,7 +95,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         // optional additional previews to compare layouts, themes, etc
-//        ContentView()
-//            .preferredColorScheme(.dark)
+        //        ContentView()
+        //            .preferredColorScheme(.dark)
     }
 }
