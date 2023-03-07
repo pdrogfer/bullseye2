@@ -20,7 +20,7 @@ struct Shapes: View {
                     .transition(.scale)
             }
             
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
                 .fill(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
                 .frame(width: wideShapes ? 200 : 100, height: 100)
                 // individual animation example

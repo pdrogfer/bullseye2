@@ -61,9 +61,9 @@ struct RoundRectText: View {
             .font(.title3)
             .kerning(-0.2)
             .foregroundColor(Color("TextColor"))
-            .frame(width: 68, height: 56)
+            .frame(width: Constants.General.roundedRectViewWidth, height: Constants.General.roundedRectViewHeight)
             .overlay(
-                RoundedRectangle(cornerRadius: 21).strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2)
+                RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius).strokeBorder(Color("ButtonStrokeColor"), lineWidth:Constants.General.strokeWidth)
             )
     }
 }
