@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct BackgroundView: View {
-    @Binding var alertIsVisible: Bool
     @Binding var game: Game
     
     var body: some View {
         VStack {
-            TopView(alertIsVisible: $alertIsVisible, game: $game)
+            TopView(game: $game)
             Spacer()
             BottomView(game: $game)
         }
@@ -23,21 +22,27 @@ struct BackgroundView: View {
 }
 
 struct TopView: View {
-    @Binding var alertIsVisible: Bool
     @Binding var game: Game
+    @State private var leaderboardIsVisible = false
     
     var body: some View {
         HStack {
             Button(action: {
-                alertIsVisible = false
                 game.restart()
             }, label: {
                 RoundedImageViewStroked(systemName: "arrow.counterclockwise")
             })
             Spacer()
-            RoundedImageViewStroked(systemName: "list.dash")
+            Button {
+                // show leaderboard
+                leaderboardIsVisible = true
+            } label: {
+                RoundedImageViewStroked(systemName: "list.dash")
+            }
+            .sheet(isPresented: $leaderboardIsVisible) {
+                LeaderboardView()
+            }
         }
-        
     }
 }
 
@@ -90,6 +95,6 @@ struct RingsView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundView(alertIsVisible: .constant(false), game: .constant(Game()))
+        BackgroundView(game: .constant(Game()))
     }
 }
