@@ -20,6 +20,44 @@ struct LeaderboardView: View {
     }
 }
 
+struct HeaderView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    var body: some View {
+        ZStack {
+            HStack {
+                BigBoldText(text: "Leaderboard")
+                if (verticalSizeClass == .regular && horizontalSizeClass == .compact) {
+                    Spacer()
+                }
+            }
+            HStack {
+                Spacer()
+                Button {
+                    
+                } label: {
+                    RoundedImageViewFilled(systemName: "xmark")
+                }
+                
+            }
+        }.padding(.horizontal)
+    }
+}
+
+struct LabelView: View {
+    var body: some View {
+        HStack {
+            Spacer().frame(width: Constants.General.roundedViewLength)
+            Spacer()
+            LabelText(text: "Score").frame(width: Constants.Leaderboard.scoreColumnWidth)
+            Spacer()
+            LabelText(text: "Date").frame(width: Constants.Leaderboard.dateColumnWidth)
+        }.padding(.horizontal)
+            .frame(maxWidth: Constants.Leaderboard.maxRowWidth)
+    }
+}
+
 struct RowView: View {
     let index: Int
     let score: Int
@@ -34,40 +72,12 @@ struct RowView: View {
             Spacer()
             DateText(date: date)
                 .frame(width: Constants.Leaderboard.dateColumnWidth)
-        }.background(RoundedRectangle(cornerRadius: .infinity).strokeBorder(Color("LeaderboardRowColor"), lineWidth: Constants.General.strokeWidth)
+        }.background(RoundedRectangle(cornerRadius: .infinity)
+            .strokeBorder(Color("LeaderboardRowColor"),
+                          lineWidth: Constants.General.strokeWidth)
         )
         .padding(.horizontal)
         .frame(maxWidth: Constants.Leaderboard.maxRowWidth)
-    }
-}
-
-struct HeaderView: View {
-    var body: some View {
-        ZStack {
-            BigBoldText(text: "Leaderboard")
-            HStack {
-                Spacer()
-                Button {
-                    
-                } label: {
-                    RoundedImageViewFilled(systemName: "xmark")
-                }
-
-            }
-        }
-    }
-}
-
-struct LabelView: View {
-    var body: some View {
-        HStack {
-            Spacer().frame(width: Constants.General.roundedViewLength)
-            Spacer()
-            LabelText(text: "Score").frame(width: Constants.Leaderboard.scoreColumnWidth)
-            Spacer()
-            LabelText(text: "Date").frame(width: Constants.Leaderboard.dateColumnWidth)
-        }.padding(.horizontal)
-            .frame(maxWidth: Constants.Leaderboard.maxRowWidth)
     }
 }
 
