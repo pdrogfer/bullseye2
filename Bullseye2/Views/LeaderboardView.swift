@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+    @Binding var game: Game
     @Binding var leaderboardIsVisible: Bool
 
     var body: some View {
@@ -16,7 +17,15 @@ struct LeaderboardView: View {
             VStack(spacing: 10) {
                 HeaderView(leaderboardIsVisible: $leaderboardIsVisible)
                 LabelView()
-                RowView(index: 1, score: 10, date: Date())
+                ScrollView {
+                    VStack(spacing: 10) {
+                        
+                        ForEach(game.leaderboardEntries.indices, id: \.self) { i in
+                            let entry = game.leaderboardEntries[i]
+                            RowView(index: i + 1, score: entry.score, date: entry.date)
+                        }
+                    }
+                }
             }
         }
     }
@@ -41,11 +50,11 @@ struct HeaderView: View {
                 Button {
                     leaderboardIsVisible = false
                 } label: {
-                    RoundedImageViewFilled(systemName: "xmark")
+                    RoundedImageViewStroked(systemName: "xmark")
                 }
                 
             }
-        }.padding(.horizontal)
+        }.padding([.horizontal, .top])
     }
 }
 
@@ -86,8 +95,11 @@ struct RowView: View {
 }
 
 struct LeaderboardView_Previews: PreviewProvider {
+    static private var game = Binding.constant(Game(loadTestData: true))
+    static private var leaderboardIsVisible = Binding.constant(false)
+    
     static var previews: some View {
-        LeaderboardView(leaderboardIsVisible: .constant(false)).previewInterfaceOrientation(.landscapeRight)
-        LeaderboardView(leaderboardIsVisible: .constant(false)).preferredColorScheme(.dark)
+        LeaderboardView(game: game, leaderboardIsVisible: leaderboardIsVisible).previewInterfaceOrientation(.landscapeRight)
+        LeaderboardView(game: game, leaderboardIsVisible: leaderboardIsVisible).preferredColorScheme(.dark)
     }
 }

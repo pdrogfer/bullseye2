@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(game: $game)
+            BackgroundView(game: $game, alertIsVisible: $alertIsVisible)
             VStack {
                 InstructionsView(game: $game)
                     .padding(.bottom, alertIsVisible ? 0 : 100)
