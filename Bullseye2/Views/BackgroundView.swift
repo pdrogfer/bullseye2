@@ -1,10 +1,3 @@
-//
-//  BackgroundView.swift
-//  Bullseye2
-//
-//  Created by Pedro Gonzalez Ferrandez on 03.03.23.
-//
-
 import SwiftUI
 
 struct BackgroundView: View {
