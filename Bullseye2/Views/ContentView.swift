@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Bullseye2
-//
-//  Created by Pedro Gonzalez Ferrandez on 01.03.23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
