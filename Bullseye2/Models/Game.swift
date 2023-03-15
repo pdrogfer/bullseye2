@@ -1,10 +1,3 @@
-//
-//  Game.swift
-//  Bullseye2
-//
-//  Created by Pedro Gonzalez Ferrandez on 02.03.23.
-//
-
 import Foundation
 
 struct Game {
